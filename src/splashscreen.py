@@ -13,6 +13,8 @@ class SplashScreen(tkinter.Tk):
         self.configure(bg = "sky blue")
         self.resizable(width = False, height = False)
         self.overrideredirect(True)
+        self.wait_visibility()
+        self.attributes("-alpha", 0.5)
 
 
 
