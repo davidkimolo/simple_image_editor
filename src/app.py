@@ -53,7 +53,7 @@ ss.SplashScreen.mainloop()
 # initialization
 mw.MainWindow = mw.MainWindow()
 # mainwindow_menu_bar
-mainwindow_menu_bar = mw.tkinter.Menu(mw.MainWindow, font = ("times", 10, "bold"))
+mainwindow_menu_bar = mw.tkinter.Menu(mw.MainWindow, font = ("times", 10, "bold"), bg  = "#787878", fg = "white")
 
 # initialize main window items
 file_items = mw.tkinter.Menu(mainwindow_menu_bar)

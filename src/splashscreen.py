@@ -8,13 +8,13 @@ class SplashScreen(tkinter.Tk):
         super().__init__()
         """ splashscreen attributes """
         self.title("Splashscreen")
-        # to-do -> correctly senter the window
+        # to-do -> correctly center the window
         self.geometry("600x600+600+250")
         self.configure(bg = "sky blue")
         self.resizable(width = False, height = False)
         self.overrideredirect(True)
         self.wait_visibility()
-        self.attributes("-alpha", 0.5)
+        self.attributes("-alpha", 0.8)
 
 
 
