@@ -2,6 +2,9 @@
 import splashscreen as ss 
 import mainwindow as mw
 import toplevel_create_image as tci 
+from tkinter import filedialog
+import PIL
+from PIL import ImageTk, Image
 import time
 
 # initialize splashscreen
@@ -40,7 +43,8 @@ def load_progress_bar():
 
 def load_main_window():
     ss.SplashScreen.destroy()
-    
+
+
 
 # do action
 ss.SplashScreen.after(load_time, load_progress_bar)
@@ -56,6 +60,21 @@ mw.MainWindow = mw.MainWindow()
 # mainwindow_menu_bar
 mainwindow_menu_bar = mw.tkinter.Menu(mw.MainWindow, font = ("times", 10, "bold"), bg  = "#787878", fg = "white")
 
+# open image
+def open_the_image():
+    image_path = filedialog.askopenfilename()
+    open_image = Image.open(image_path)
+    converted = ImageTk.PhotoImage(open_image)
+    return converted
+
+the_converted_image = open_the_image()
+
+load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
+load_image_canvas.create_image(0,0, image = the_converted_image, anchor = mw.tkinter.NW)
+load_image_canvas.grid(row = 0, column = 1)
+load_image_canvas.update_idletasks()
+    
+
 # initialize main window items
 file_items = mw.tkinter.Menu(mainwindow_menu_bar)
 edit_items = mw.tkinter.Menu(mainwindow_menu_bar)
@@ -66,7 +85,7 @@ help_items = mw.tkinter.Menu(mainwindow_menu_bar)
 
 # add file items
 file_items.add_command(label = "new", command = tci.TopLevelCreateImage)
-file_items.add_command(label = "open", command = "")
+file_items.add_command(label = "open", command = open_the_image)
 file_items.add_command(label = "0pen as", command = "")
 file_items.add_command(label = "save", command = "")
 file_items.add_command(label = "save as ", command = "")
@@ -104,18 +123,34 @@ mainwindow_menu_bar.add_cascade(label = "Compositing", menu = compositing_items)
 mainwindow_menu_bar.add_cascade(label = "Help", menu = help_items)
 
 
+
+
+# get_new_image
+def get_new_image():
+    
+    the_new_image = mw.tkinter.PhotoImage(file = "assets/images/splashscreen_background.png")
+    try:
+        # initialized = tci.TopLevelCreateImage() 
+        pass
+    except:
+        return the_new_image
+    return the_new_image
+
+the_image = get_new_image()
+
+# assign the function to a variable
+
 # load_image_canvas
 
-load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800,
-                                        bg = "light blue", highlightthickness = 5)
-load_image_canvas.grid(row = 0, column = 1)
+
+
 
 # try
 
 
-
-
 # add menu bar to window
 mw.MainWindow.configure(menu = mainwindow_menu_bar)
+load_image_canvas.update_idletasks()
+load_image_canvas.update()
 # run mainwindow loop
 mw.MainWindow.mainloop()
