@@ -1,6 +1,7 @@
 # import
 import splashscreen as ss 
 import mainwindow as mw
+import toplevel_create_image as tci 
 import time
 
 # initialize splashscreen
@@ -9,7 +10,7 @@ ss.SplashScreen = ss.SplashScreen()
 load_time = 100
 # splashscreen_background_image
 # to do -> set path to relative
-splashscreen_background_image = ss.tkinter.PhotoImage(file = "/home/daudi/Desktop/simple_image_editor/src/assets/images/splashscreen_background.png")
+splashscreen_background_image = ss.tkinter.PhotoImage(file = "assets/images/splashscreen_background.png")
 
 # splashscreen_background_label
 splashscreen_background_label = ss.tkinter.Label(ss.SplashScreen, image = splashscreen_background_image)
@@ -64,7 +65,7 @@ compositing_items = mw.tkinter.Menu(mainwindow_menu_bar)
 help_items = mw.tkinter.Menu(mainwindow_menu_bar)
 
 # add file items
-file_items.add_command(label = "new", command = "")
+file_items.add_command(label = "new", command = tci.TopLevelCreateImage)
 file_items.add_command(label = "open", command = "")
 file_items.add_command(label = "0pen as", command = "")
 file_items.add_command(label = "save", command = "")
@@ -101,6 +102,17 @@ mainwindow_menu_bar.add_cascade(label = "Image", menu = image_items)
 mainwindow_menu_bar.add_cascade(label = "Filter", menu = filters_items)
 mainwindow_menu_bar.add_cascade(label = "Compositing", menu = compositing_items)
 mainwindow_menu_bar.add_cascade(label = "Help", menu = help_items)
+
+
+# load_image_canvas
+
+load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800,
+                                        bg = "light blue", highlightthickness = 5)
+load_image_canvas.grid(row = 0, column = 1)
+
+# try
+
+
 
 
 # add menu bar to window
