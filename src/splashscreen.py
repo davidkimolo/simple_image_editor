@@ -16,9 +16,6 @@ class SplashScreen(tkinter.Tk):
         self.wait_visibility()
         self.attributes("-alpha", 0.8)
 
-
-
-
 if __name__ == "__main__":
     # initialize splashscreen
     SplashScreen = SplashScreen()

@@ -71,7 +71,6 @@ class TopLevelCreateImage():
             toplevel_create_image.destroy()
             return new_image_compatible
 
-        # self.newly_created_image = create_new_image()
         
         # create_image_button
         create_image_button = mw.tkinter.Button(toplevel_create_image, text = "create image",

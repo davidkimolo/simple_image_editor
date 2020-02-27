@@ -60,19 +60,29 @@ mw.MainWindow = mw.MainWindow()
 # mainwindow_menu_bar
 mainwindow_menu_bar = mw.tkinter.Menu(mw.MainWindow, font = ("times", 10, "bold"), bg  = "#787878", fg = "white")
 
+default_image = mw.tkinter.PhotoImage(file = "assets/images/splashscreen_background.png")
+
+# default_canvas
+
+load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
+load_image_canvas.create_image(0,0, image = default_image, anchor = mw.tkinter.NW)
+load_image_canvas.grid(row = 0, column = 1)
+
 # open image
 def open_the_image():
     image_path = filedialog.askopenfilename()
     open_image = Image.open(image_path)
+    global converted
     converted = ImageTk.PhotoImage(open_image)
     return converted
 
-the_converted_image = open_the_image()
-
-load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
-load_image_canvas.create_image(0,0, image = the_converted_image, anchor = mw.tkinter.NW)
-load_image_canvas.grid(row = 0, column = 1)
-load_image_canvas.update_idletasks()
+# change_image
+def change_image():
+    
+    open_the_image ()
+    load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
+    load_image_canvas.create_image(0,0, image = converted, anchor = mw.tkinter.NW)
+    load_image_canvas.grid(row = 0, column = 1)
     
 
 # initialize main window items
@@ -85,7 +95,7 @@ help_items = mw.tkinter.Menu(mainwindow_menu_bar)
 
 # add file items
 file_items.add_command(label = "new", command = tci.TopLevelCreateImage)
-file_items.add_command(label = "open", command = open_the_image)
+file_items.add_command(label = "open", command = change_image)
 file_items.add_command(label = "0pen as", command = "")
 file_items.add_command(label = "save", command = "")
 file_items.add_command(label = "save as ", command = "")
