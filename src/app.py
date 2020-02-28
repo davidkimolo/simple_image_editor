@@ -64,7 +64,7 @@ default_image = mw.tkinter.PhotoImage(file = "assets/images/splashscreen_backgro
 
 # default_canvas
 
-load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
+load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800)
 load_image_canvas.create_image(0,0, image = default_image, anchor = mw.tkinter.NW)
 load_image_canvas.grid(row = 0, column = 1)
 
@@ -78,12 +78,12 @@ def open_the_image():
 
 # change_image
 def change_image():
-    
+
     open_the_image ()
-    load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800, bg = "green")
+    # load the image
+    load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800)
     load_image_canvas.create_image(0,0, image = converted, anchor = mw.tkinter.NW)
     load_image_canvas.grid(row = 0, column = 1)
-    
 
 # initialize main window items
 file_items = mw.tkinter.Menu(mainwindow_menu_bar)
