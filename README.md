@@ -11,6 +11,7 @@ Create a splash splashscreen
       - The window should be transparent
       - The window should be centred (done)
       - Add a Progressbar (done)
+
   
 Create Main Window
 
@@ -22,3 +23,11 @@ Create new images
       - toplevel window to get the window settings
       - Use the settings to create the image
       - load the image on the main window canvas
+      - Fix color picker from closing the create image window (maybe make it's own class)
+      - Clear image after loading the first image(bug: when making a new image)
+      - Show transparency checked boxes 
+
+``` python 
+
+app.load_image_canvas.configure(mw.MainWindow) (correct error)
+```
