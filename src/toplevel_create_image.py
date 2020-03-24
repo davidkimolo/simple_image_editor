@@ -85,15 +85,18 @@ class TopLevelCreateImage():
                                 color =  ((int(image_background_color_text_red.get("1.0", mw.tkinter.END))),
                                         (int(image_background_color_text_green.get("1.0", mw.tkinter.END))),
                                         (int(image_background_color_text_blue.get("1.0", mw.tkinter.END)))))
+            #  get new image properties
+            the_width, the_height = new_image.size
             # to-do clear the image
             new_image_compatible = ImageTk.PhotoImage(new_image)
             # load the image on the canvas 
-            app.load_image_canvas.delete("all")
-            app.load_image_canvas.create_image(0,0, image = new_image_compatible, anchor = mw.tkinter.NW)
+            app.default_image_canvas.delete("all")
+            # app.default_image_canvas = mw.tkinter.Canvas(toplevel_create_image, height = the_height, width = the_width)
+            app.default_image_canvas.create_image(0,0, image = new_image_compatible, anchor = mw.tkinter.NW)
             # app.load_image_canvas.grid(row = 0, column = 1)
             toplevel_create_image.destroy()
             # to-do - correct error
-            app.load_image_canvas.configure(mw.MainWindow)
+            app.default_image_canvas.configure(mw.MainWindow)
             
 
 

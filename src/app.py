@@ -64,9 +64,9 @@ default_image = mw.tkinter.PhotoImage(file = "assets/images/splashscreen_backgro
 
 # default_canvas
 
-load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800)
-load_image_canvas.create_image(0,0, image = default_image, anchor = mw.tkinter.NW)
-load_image_canvas.grid(row = 0, column = 1)
+default_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800)
+default_image_canvas.create_image(0,0, image = default_image, anchor = mw.tkinter.NW)
+default_image_canvas.grid(row = 0, column = 1)
 
 # open image
 def open_the_image():
@@ -76,18 +76,22 @@ def open_the_image():
     global the_height
     the_width, the_height = open_image.size
     global converted
+    open_image = open_image.resize((the_width, the_height))
     converted = ImageTk.PhotoImage(open_image)
     return converted
 
 # change_image
 def change_image():
-
+    
     open_the_image ()
     # load the image
-    
+
     load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = the_height, width = the_width)
+    # clear the default canvas 
+    default_image_canvas.destroy()
     load_image_canvas.create_image(0,0, image = converted, anchor = mw.tkinter.NW)
     load_image_canvas.grid(row = 0, column = 1)
+    
 
 # initialize main window items
 file_items = mw.tkinter.Menu(mainwindow_menu_bar)
@@ -164,7 +168,7 @@ the_image = get_new_image()
 
 # add menu bar to window
 mw.MainWindow.configure(menu = mainwindow_menu_bar)
-load_image_canvas.update_idletasks()
-load_image_canvas.update()
+# load_image_canvas.update_idletasks()
+# load_image_canvas.update()
 # run mainwindow loop
 mw.MainWindow.mainloop()

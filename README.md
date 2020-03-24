@@ -11,8 +11,7 @@ Create a splash splashscreen
       - The window should be transparent
       - The window should be centred (done)
       - Add a Progressbar (done)
-
-  
+      - 
 Create Main Window
 
       - Menu (done)
@@ -26,6 +25,10 @@ Create new images
       - Fix color picker from closing the create image window (maybe make it's own class)
       - Clear image after loading the first image(bug: when making a new image)
       - Show transparency checked boxes 
+      - zoom in / out 
+      - pad functionalities 
+      - canvas scaling of the images (bug: only updated if the image is bigger)
+      - canvas update when creating a new image 
 
 ``` python 
 
