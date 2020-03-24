@@ -72,6 +72,9 @@ load_image_canvas.grid(row = 0, column = 1)
 def open_the_image():
     image_path = filedialog.askopenfilename()
     open_image = Image.open(image_path)
+    global the_width
+    global the_height
+    the_width, the_height = open_image.size
     global converted
     converted = ImageTk.PhotoImage(open_image)
     return converted
@@ -81,7 +84,8 @@ def change_image():
 
     open_the_image ()
     # load the image
-    load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = 800, width = 800)
+    
+    load_image_canvas = mw.tkinter.Canvas(mw.MainWindow, height = the_height, width = the_width)
     load_image_canvas.create_image(0,0, image = converted, anchor = mw.tkinter.NW)
     load_image_canvas.grid(row = 0, column = 1)
 
